@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- KK -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://img.icons8.com/?size=100&id=SS5zeu5HKnnG&format=png&color=000000"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Counter</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Attendance Counter</h1>
+      <form action="">
+        <label for="total_slots">Total Slots</label>
+        <input type="number" id="total_slots" placeholder="Enter total slots" />
+
+        <label for="absent_slots">Absent Slots</label>
+        <input
+          type="number"
+          id="absent_slots"
+          placeholder="Enter absent slots"
+        />
+
+        <input
+          type="button"
+          value="Caclulate"
+          id="submit"
+          onclick="count_attendance(event)"
+        />
+
+        <div id="attendance_result"></div>
+      </form>
+    </div>
+
+    <script>
+      function count_attendance(event) {
+        event.preventDefault();
+
+        let t_slots = document.getElementById("total_slots").value;
+        let a_slots = document.getElementById("absent_slots").value;
+
+        t_slots = Number(t_slots);
+        a_slots = Number(a_slots);
+
+        if (isNaN(t_slots) || isNaN(a_slots) || t_slots === 0) {
+          alert("Please enter valid numbers for total and absent slots.");
+          return;
+        }
+
+        let attendance = ((t_slots - a_slots) / t_slots) * 100;
+
+        let resultText = "Attendance: " + attendance.toFixed(2) + "%";
+        let resultElement = document.getElementById("attendance_result");
+        resultElement.innerText = resultText;
+
+        if (attendance < 50) {
+          resultElement.style.color = "red";
+        } else if (attendance >= 50 && attendance < 75) {
+          resultElement.style.color = "orange";
+        } else {
+          resultElement.style.color = "#4CAF50";
+        }
+      }
+    </script>
+  </body>
+</html>

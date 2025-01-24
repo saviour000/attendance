@@ -1,0 +1,145 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    background: linear-gradient(45deg, #ff8c00, #00bfff, #32cd32, #8a2be2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+  }
+
+  select,
+input[type="date"] {
+width: 50%;
+padding: 12px;
+margin-bottom: 20px;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 1.1em;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+select,
+input[type="date"] {
+background-color: #2b2f3a;
+color: white;
+cursor: pointer;
+font-size: 1.1em;
+}
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    color: teal;
+  }
+
+  .container {
+    background-color: #11131e;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+  }
+  .container:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  label {
+    font-size: 1.1em;
+    color: white;
+    margin-bottom: 8px;
+    display: block;
+    text-align: center;
+  }
+
+  input[type="number"],
+  input[type="button"] {
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1.1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input[type="button"] {
+    background-color: rgb(132, 147, 211);
+    color: black;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+  }
+
+  input[type="button"]:hover {
+    background-color: rgb(166, 166, 214);
+  }
+
+  #attendance_result {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 15px;
+      width: 90%; 
+    }
+  
+    h1 {
+      font-size: 1.2em; 
+    }
+  
+    input[type="number"],
+    input[type="button"],
+    select,
+    input[type="date"] {
+      width: 80%; 
+      font-size: 1em;
+    }
+  }
+
+  .center-link {
+    display: block; 
+    padding: 12px 24px;
+    margin: 20px auto; 
+    color: black;
+    border: 3px solid black;
+    border-radius: 5px;
+    background: white;
+    text-decoration: none;
+    text-align: center; 
+  }
+  
+  .center-link:hover {
+    background-color: #f0f0f0;
+  }
+  
