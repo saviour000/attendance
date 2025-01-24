@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!-- KK -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://img.icons8.com/?size=100&id=SS5zeu5HKnnG&format=png&color=000000"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Counter</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+        background: linear-gradient(45deg, #ff8c00, #00bfff, #32cd32, #8a2be2);
+        background-size: 400% 400%;
+        animation: gradientAnimation 10s ease infinite;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      h1 {
+        text-align: center;
+        color: teal;
+      }
+
+      .container {
+        background-color: #11131e;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        transition: all 0.3s ease;
+      }
+      .container:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      label {
+        font-size: 1.1em;
+        color: white;
+        margin-bottom: 8px;
+        display: block;
+        text-align: center;
+      }
+
+      input[type="number"],
+      input[type="button"] {
+        width: 50%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1.1em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      input[type="button"] {
+        background-color: rgb(132, 147, 211);
+        color: black;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        display: block;
+        margin: 0 auto;
+      }
+
+      input[type="button"]:hover {
+        background-color: rgb(166, 166, 214);
+      }
+
+      #attendance_result {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+          width: 90%;
+        }
+        input[type="number"],
+        input[type="button"] {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Attendance Counter</h1>
+      <form action="">
+        <label for="total_slots">Total Slots</label>
+        <input type="number" id="total_slots" placeholder="Enter total slots" />
+
+        <label for="absent_slots">Absent Slots</label>
+        <input
+          type="number"
+          id="absent_slots"
+          placeholder="Enter absent slots"
+        />
+
+        <input
+          type="button"
+          value="Caclulate"
+          id="submit"
+          onclick="count_attendance(event)"
+        />
+
+        <div id="attendance_result"></div>
+      </form>
+    </div>
+
+    <script>
+      function count_attendance(event) {
+        event.preventDefault();
+
+        let t_slots = document.getElementById("total_slots").value;
+        let a_slots = document.getElementById("absent_slots").value;
+
+        t_slots = Number(t_slots);
+        a_slots = Number(a_slots);
+
+        if (isNaN(t_slots) || isNaN(a_slots) || t_slots === 0) {
+          alert("Please enter valid numbers for total and absent slots.");
+          return;
+        }
+
+        let attendance = ((t_slots - a_slots) / t_slots) * 100;
+
+        let resultText = "Attendance: " + attendance.toFixed(2) + "%";
+        let resultElement = document.getElementById("attendance_result");
+        resultElement.innerText = resultText;
+
+        if (attendance < 50) {
+          resultElement.style.color = "red";
+        } else if (attendance >= 50 && attendance < 75) {
+          resultElement.style.color = "orange";
+        } else {
+          resultElement.style.color = "#4CAF50";
+        }
+      }
+    </script>
+  </body>
+</html>
